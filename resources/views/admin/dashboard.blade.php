@@ -34,10 +34,12 @@
         {{-- /.col --}}
 
         <div class="col">
-            <div class="card text-center haver_shadow">
-                <div class="card-header text-uppercase">
-                    users <i class="fa-solid fa-user-group fa-xs"></i>
-                </div>
+            <div class="card text-center hover_shadow">
+                <a class="text-dark text-decoration-none" href="##">
+                    <div class="card-header text-uppercase">
+                        users <i class="fa-solid fa-user-group fa-xs"></i>
+                    </div>
+                </a>
 
                 <div class="card-body">
                     
@@ -54,13 +56,17 @@
         {{-- /.col --}}
 
         <div class="col">
-            <div class="card text-center haver_shadow">
-                <div class="card-header text-uppercase">other</div>
+            <div class="card text-center hover_shadow">
+                <a class="text-dark text-decoration-none" href="{{ route('admin.types.index') }}">
+                    <div class="card-header text-uppercase">
+                        Total Types
+                    </div>
+                </a>
 
                 <div class="card-body">
                     
                     <div>
-                        {{$total_projects}}
+                        {{$total_types}}
                     </div>
 
                    
