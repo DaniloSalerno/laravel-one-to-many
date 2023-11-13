@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Type;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class TypeController extends Controller
 {
@@ -23,7 +24,7 @@ class TypeController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.types.create');
     }
 
     /**
@@ -31,7 +32,14 @@ class TypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $data = $request->all();
+
+        $data['slug'] = Str::slug($request->name, '-');
+        //dd($data);
+        Type::create($data);
+
+        return to_route('admin.types.index')->with('message', 'Types created successfully');
     }
 
     /**
