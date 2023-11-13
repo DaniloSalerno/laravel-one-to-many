@@ -47,7 +47,7 @@
                         
                         <td>
 
-                            <div class="d-flex gap-2">
+                            <div class="d-flex justify-content-center gap-4">
                                 {{-- <a href=" {{route('admin.types.show', $type->slug)}} " class="btn btn-outline-primary">
                                     <i class="fa-solid fa-eye"></i>
                                 </a>  --}}

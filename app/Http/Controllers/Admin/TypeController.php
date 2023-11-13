@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\StoreTypeRequest;
+use App\Http\Requests\UpdateTypeRequest;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -30,14 +32,14 @@ class TypeController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreTypeRequest $request)
     {
 
-        $data = $request->all();
+        $val_data = $request->validated();
 
-        $data['slug'] = Str::slug($request->name, '-');
-        //dd($data);
-        Type::create($data);
+        $val_data['slug'] = Str::slug($request->name, '-');
+        //dd($val_data);
+        Type::create($val_data);
 
         return to_route('admin.types.index')->with('message', 'Types created successfully');
     }
@@ -61,13 +63,13 @@ class TypeController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Type $type)
+    public function update(UpdateTypeRequest $request, Type $type)
     {
-        $data = $request->all();
+        $val_data = $request->validated();
 
-        $data['slug'] = Str::slug($request->name, '-');
-        //dd($data);
-        $type->update($data);
+        $val_data['slug'] = Str::slug($request->name, '-');
+        //dd($val_data);
+        $type->update($val_data);
 
         return to_route('admin.types.index')->with('message', 'Types created successfully');
     }
